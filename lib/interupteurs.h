@@ -38,11 +38,11 @@ class BoutonBlanc : public Interupt
   volatile uint8_t *_DDR_INTERRUPTEUR = &DDRC;
   volatile uint8_t *_PIN_INTERRUPTEUR = &PINC;
   uint8_t _BIT_INTERRUPTEUR = 0;
-  
-  public:
-    bool verifierPIN();
-    void filtreAntiRebondScrutation(bool appuyer);
-    void initialisationInterrupt();
-    void desinitialisationInterrupt();
+
+public:
+  bool verifierPIN();
+  void filtreAntiRebondScrutation(bool appuyer);
+  void initialisationInterrupt();
+  void desinitialisationInterrupt();
 };
 #endif

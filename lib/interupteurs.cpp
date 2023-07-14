@@ -58,4 +58,3 @@ void BoutonBlanc::initialisationInterrupt()
     PCICR |= (1 << PCIE2);
     sei();
 }
-

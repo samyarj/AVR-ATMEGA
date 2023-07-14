@@ -10,7 +10,6 @@ class Sonarite : public ControlPort
 {
 public:
     Sonarite();
-
     uint16_t convertirNote(uint8_t noteDonnee);
     void commencerSon(uint16_t frequence_note);
     void arreterSon();
