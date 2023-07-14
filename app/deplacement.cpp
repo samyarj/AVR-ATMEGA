@@ -1,4 +1,5 @@
 #include "deplacement.h"
+//entry of HeyRayKane
 
 uint16_t Deplacement::getResultat()
 {
