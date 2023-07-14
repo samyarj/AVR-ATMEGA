@@ -1,13 +1,4 @@
 /* 
-Auteurs: Rayan Ajakane,Samyar Mahmoudi, Anastassiya Kim, Hamza Yazough
-
-
-    Travail : ProjetFinal
-    Section # : 03
-    Équipe # : 6163
-    Correcteur : Julien Bourque
-
-
 Description du programme:
 Dans cet algorithme, le robot a pour but de détecter plusieurs poteaux sur une table 4x8 (distance de 11 pouces entre chaque points
 horizontaux/verticaux) et de transmettre une image svg de tous les points auxquels les poteaux ont été détectés à un script python
