@@ -15,8 +15,6 @@ public:
     void commencerSon(uint16_t frequence_note);
     void arreterSon();
 
-    //~Sonarite() = default;
-
 private:
     const uint16_t CPU_PRESCALER_ = 15625; // (F_CPU/256*2)
 };
