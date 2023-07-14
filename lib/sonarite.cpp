@@ -3,7 +3,6 @@
 #endif
 
 #include "sonarite.h"
-#include <cstdint>
 #include <unordered_map>
 
 Sonarite::Sonarite()
