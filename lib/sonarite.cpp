@@ -16,8 +16,8 @@ void Sonarite::commencerSon(uint16_t frequence_note)
 {
     TCNT2 = 0;
     OCR2A = (CPU_PRESCALER_ / (frequence_note)) - 1;
-    TCCR2A = (1 << COM2A0) | (1 << WGM21); // compare match,  Mode CTC
-    TCCR2B = (1 << CS22) | (1 << CS21);    // prescaler = 256
+    TCCR2A = (1 << COM2A0) | (1 << WGM21);  // compare match,  Mode CTC
+    TCCR2B = (1 << CS22) | (1 << CS21);     // prescaler = 256
 }
 
 void Sonarite::arreterSon()
@@ -40,7 +40,6 @@ public:
             {80, 831}, {81, 880}
         };
 
-        // Lookup the note frequency in the hashmap
         auto iter = noteMap.find(noteDonnee);
         if (iter != noteMap.end()) {
             return iter->second;
