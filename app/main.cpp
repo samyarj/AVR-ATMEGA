@@ -1,12 +1,10 @@
-/* 
-Description du programme:
-Dans cet algorithme, le robot a pour but de détecter plusieurs poteaux sur une table 4x8 (distance de 11 pouces entre chaque points
-horizontaux/verticaux) et de transmettre une image svg de tous les points auxquels les poteaux ont été détectés à un script python
-de tranmission d'une image svg. Avant la détection, le robot devra être placé au point rouge et sa position vers le haut ou vers la
-droite influencera les mouvements du robot. Le bouton blanc ou le bouton interrupteur doit être pressé pour choisir la direction.
-Pendant la détection, le robot devra se déplacer vers un poteau, s'arrêter à une certaine distance et faire clignoter la DEL de 
-couleur ambre.  À la fin de la détection, la DEL sera de couleur rouge. Lors de la transmission des données du robot vers l'ordinateur
-portable, la LED clignotera en vert puis transmettra l'image d'un polygone convexe avec l'aire du polygone et le nom de l'équipe.
+/* Program Description:
+In this algorithm, the robot's goal is to detect multiple posts on a 4x8 table (11 inches distance between each horizontal/vertical
+points) and transmit an SVG image of all the points where the posts have been detected to a Python script for SVG image transmission.
+Before detection, the robot needs to be placed at the red point, and its orientation towards up or right will influence the robot's movements.
+The white button or toggle switch must be pressed to choose the direction. During detection, the robot should move towards a post,
+stop at a certain distance, and flash an amber-colored LED. At the end of the detection, the LED will turn red. When transmitting data
+from the robot to the laptop, the LED will blink green and transmit the image of a convex polygon with the polygon's area and the team's name.
 
 Identification matérielles (Broches I/O):
 PORTA0-A1: DEL
@@ -88,7 +86,7 @@ ISR(PCINT2_vect)
   PCIFR |= (1 << PCIF2);
 }
 
-// pour clignoter la DEL
+// pour faire clignoter la DEL
 void timer1_init()
 {
   TCCR1B |= (1 << WGM12);              // mode CTC
