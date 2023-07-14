@@ -3,12 +3,6 @@
 
 #include <avr/io.h>
 
-/*while (true){
- * Classe can:
- *   Le constructeur initialise le convertisseur.
- *   Une lecture enclanche une conversion et le resultat
- *   est retourne sur 16 bits.
- */
 class can
 {
 public:
