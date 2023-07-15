@@ -1,0 +1,7 @@
+class Pole
+{
+public:
+
+private:
+
+}

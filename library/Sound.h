@@ -1,0 +1,7 @@
+class Sound
+{
+public:
+
+private:
+
+}
