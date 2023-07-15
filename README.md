@@ -2,6 +2,6 @@
 This repository contains a microcontroller programming project.
 
 ## TODO
-* [ ] Drawing UML diagrams.
+* [x] Drawing concept diagram.
 * [ ] Refactoring code.
 * [ ] Adding documentation.
