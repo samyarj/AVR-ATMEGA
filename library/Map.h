@@ -6,27 +6,10 @@
 class Map
 {
 public:
-    Map(uint8_t width, uint8_t lenght): width_(width), lenght_(lenght)
-    {
-        for (uint8_t i = 0; i < width; ++i)
-        {
-            for (uint8_t j = 0; j < lenght; ++j)
-            {
-                uint8_t key = this->tileCounter_;
-                tiles_[key] = std::make_unique<Tile>(i, j);
-                this->tileCounter_++;
-            }
-        }
-    }
+    Map(uint8_t width, uint8_t lenght);
     ~Map() = default;
 
-    std::unique_ptr<Tile> getTile(uint8_t key)
-    {
-        if (tiles_.find(key) != tiles_.end())
-            return std::move(tiles_[key]);
-        else
-            return nullptr;
-    }
+    std::unique_ptr<Tile> getTile(uint8_t key);
 
 private:
     int tileCounter_ = 0;  // stores total number of tiles
@@ -49,6 +32,7 @@ Conditions: for tile : tiles_{}
 Angle 0: if (isUnderTopRow(id)) tile->setVoisins(0, id+length)
 
 Angle 45: if (isUnderTopRow(id) && isNotRightColumn(id)) tile->setVoisins(1, id+length+1)
+`parseTitles()`
 
 Angle 90: if (isNotRightColumn(id)) tile->setVoisins(2, id++)
 
