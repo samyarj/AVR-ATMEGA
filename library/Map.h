@@ -3,19 +3,23 @@
 class Map
 {
 public:
-    Map(uint32_t width, uint32_t lenght);
+    Map(uint32_t width, uint32_t length) : width_(width), length_(length) {};
     ~Map() = default;
 
     std::shared_ptr<Tile> getTile(uint32_t key);
 
-    // this method gives neighbours to Tiles.
     void parseTiles();
 
+    bool isUnderTopRow(uint32_t id) { return id <= (width_ * (length_ - 1)); }
+    bool isNotRightColumn(uint32_t id) { return (id % width_) != 0; }
+    bool isOverBottomRow(uint32_t id) { return id > width_; }
+    bool isNotLeftColumn(uint32_t id) { return (id % width_) != 1; }
+    
 private:
-    int tileCounter_ = 1; // stores total number of tiles
+    int tileCounter_ = 1;
     std::unordered_map<uint32_t, std::shared_ptr<Tile>> tiles_;
     uint32_t width_;
-    uint32_t lenght_;
+    uint32_t length_;
 };
 
 
