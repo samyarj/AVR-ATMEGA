@@ -1,4 +1,9 @@
 #include "Position.h"
+#include <vector>
+#include <map>
+#include <string>
+#include <unordered_map>
+#include <memory>
 
 class ObjectAbs
 {

@@ -1,4 +1,6 @@
+#include <iostream>
 #include <avr/io.h>
+using namespace std;
 
 class Position
 {
