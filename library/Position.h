@@ -1,5 +1,12 @@
-#include <iostream>
 #include <avr/io.h>
+
+#include <iostream>
+#include <vector>
+#include <map>
+#include <string>
+#include <unordered_map>
+#include <memory>
+
 using namespace std;
 
 class Position
