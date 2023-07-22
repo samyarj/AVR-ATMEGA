@@ -1,7 +1,0 @@
-class Map
-{
-public:
-
-private:
-
-}
