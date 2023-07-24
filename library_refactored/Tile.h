@@ -1,9 +1,9 @@
-#include "ObjectAbs.h"
+#include "AbsPosition.h"
 
-class Tile : public ObjectAbs
+class Tile : public AbsPosition
 {
 public:
-    Tile(uint32_t x, uint32_t y) : ObjectAbs(x, y) {};
+    Tile(uint32_t x, uint32_t y) : AbstractPosition(x, y) {};
     ~Tile() = default;
 
     void setNeighbour(uint8_t angle, int idNeighbour);

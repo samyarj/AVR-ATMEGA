@@ -1,7 +1,8 @@
+
 class Pole
 {
 public:
 
 private:
 
-}
+};

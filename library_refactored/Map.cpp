@@ -38,4 +38,4 @@ void Map::parseTiles()
         if (isNotLeftColumn(id)) tile->setNeighbour(270, id-1);
         if (isUnderTopRow(id) && isNotLeftColumn(id)) tile->setNeighbour(315, id+width_-1);
     }
-}
+};

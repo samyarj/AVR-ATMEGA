@@ -4,4 +4,4 @@ public:
 
 private:
 
-}
+};

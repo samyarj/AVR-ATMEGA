@@ -9,10 +9,10 @@
 
 using namespace std;
 
-class Position
+class AbsPosition
 {
 public:
-    Position(uint8_t x, uint8_t y) : x_(x), y_(y){}
+    AbsPosition(uint8_t x, uint8_t y) : x_(x), y_(y){}
     
     uint8_t getPosX() { return x_; }
     uint8_t getPosY() { return y_; }
