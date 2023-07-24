@@ -7,6 +7,7 @@ public:
     ~Tile() = default;
 
     void setNeighbour(uint8_t angle, int idNeighbour);
+    int getNeighbourKey(uint16_t angle);
 
 private:
     std::vector<int> neighbours_ = std::vector<int>(8, 0);
