@@ -3,7 +3,7 @@
 class Tile : public AbsPosition
 {
 public:
-    Tile(uint32_t x, uint32_t y) : AbstractPosition(x, y) {};
+    Tile(uint32_t x, uint32_t y) : AbsPosition(x, y) {};
     ~Tile() = default;
 
     void setNeighbour(uint8_t angle, int idNeighbour);
