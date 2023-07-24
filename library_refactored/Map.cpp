@@ -1,10 +1,10 @@
 #include "Map.h"
 
-Map::Map(uint32_t width, uint32_t lenght) : width_(width), lenght_(lenght)
+Map::Map(uint32_t width, uint32_t length) : width_(width), length_(length)
 {
     for (uint32_t i = 0; i < width; ++i)
     {
-        for (uint32_t j = 0; j < lenght; ++j)
+        for (uint32_t j = 0; j < length; ++j)
         {
             uint32_t key = this->tileCounter_;
             tiles_[key] = std::make_shared<Tile>(i, j);
