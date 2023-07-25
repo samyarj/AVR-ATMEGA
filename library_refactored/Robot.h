@@ -6,7 +6,7 @@ class Robot
 public:
     Robot(Tile* initTile, int16_t initAngle_) 
     : currentTile_(initTile), currentAngle_(initAngle_) {};
-
+    
     void updateTile(Tile* nextTile) { currentTile_ = nextTile; };
     void changeAngle(int16_t rotationAngle);  // changes currentAngle_  
     void initializeAngle(int16_t initAngle);  // initialize currentAngle_
