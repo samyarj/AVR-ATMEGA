@@ -13,7 +13,7 @@ public:
     virtual void setIOMode(uint8_t wantedBit, uint8_t wantedMode);
     virtual void togglePort(uint8_t wantedBit, uint8_t wantedMode);
     
-    void setPort(volatile uint8_t *portVoulu, uint8_t bitVoulu, uint8_t mode); //template method pattern
+    void setPort(volatile uint8_t *IOObject, uint8_t wantedBit, uint8_t wantedMode); //template method pattern
 
 
 protected:
