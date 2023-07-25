@@ -19,12 +19,22 @@ void IOPorts::setPort(volatile uint8_t *IOObject, uint8_t wantedBit, uint8_t wan
         *IOObject |= generateMask(wantedBit, wantedMode); //set at the wanted mode
 }
 
-void IOPorts::setIOMode(uint8_t wantedBit, uint8_t wantedMode)
+void IOPorts::setIOMode(uint8_t wantedMode)
 {
-    setPort(_ddr, wantedBit, wantedMode); //set the ddr given by subclasses ddr attribute
+    setPort(_ddr, _bit, wantedMode); //set the ddr given by subclasses ddr attribute
 }
 
-void IOPorts::togglePort(uint8_t wantedBit, uint8_t wantedMode)
+void IOPorts::togglePort(uint8_t wantedMode)
 {
-    setPort(_port, wantedBit, wantedMode); //set the port given by subclasses port attribute
+    setPort(_port, _bit, wantedMode); //set the port given by subclasses port attribute
+}
+
+void IOPorts::activateInMode()
+{
+    setIOMode(_mode00); //set the port to receive signal. Default mode of a given port.
+}
+
+void IOPorts::activateOutMode()
+{
+    setIOMode(_mode11); //set the port to send signal
 }
