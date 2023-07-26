@@ -7,7 +7,7 @@ Sensors::Sensors()
 
 uint16_t Sensors::getDistance()
 {
-    distance = 0;
+    uint16_t distance = 0;
     //sums the distances of a certain sizeSample
     for (uint8_t i = 0; i < sizeSample_; i++)
     {   

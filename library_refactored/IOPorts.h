@@ -6,7 +6,7 @@ class IOPorts
 {
 public:
     IOPorts() = default;
-    virtual ~IOPorts() = default;
+    virtual ~IOPorts() = 0;
 
 protected:
     uint8_t generateMask(uint8_t wantedBit, uint8_t wantedMode);
@@ -16,8 +16,8 @@ protected:
     
     void setPort(volatile uint8_t *IOObject, uint8_t wantedBit, uint8_t wantedMode); //template method pattern
 
-    void activateInMode();
-    void activateOutMode();
+    virtual void activateInMode();
+    virtual void activateOutMode();
 
     //modes for the generateMask() method
     uint8_t _mode00 = 0;
