@@ -7,8 +7,18 @@
 
 Sound::Sound()
 {
-    setPort(&DDRD, 6, 3);
-    setPort(&PORTD, 6, 0);
+    activateOutMode();
+    togglePort(_mode00);
+    // setPort(&DDRD, 6, 3);
+    // setPort(&PORTD, 6, 0);
+}
+
+Sound::~Sound()
+{
+    activateInMode();
+    togglePort(_mode00);
+    // setPort(&DDRD, 6, 0);
+    // setPort(&PORTD, 6, 0);
 }
 
 void Sound::startSound(uint16_t noteFrequency)
