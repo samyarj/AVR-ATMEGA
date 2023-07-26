@@ -10,7 +10,7 @@ public:
     void turnRed();
     void turnGreen();
 
-    void turnAmber(uint32_t iterations);
+    void turnAmber(uint32_t iterations); //iteration = number of repetitions of 250us for red-green cycle
 
     void turnAmberMs(uint32_t delay); //delay in milliseconds
     void turnAmberS(uint32_t delay); //delay in seconds
