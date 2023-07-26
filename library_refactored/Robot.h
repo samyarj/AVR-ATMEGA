@@ -4,16 +4,17 @@
 class Robot
 {
 public:
-    Robot(Tile* initTile, uint16_t initAngle_) 
+    Robot(Tile* initTile, int16_t initAngle_) 
     : currentTile_(initTile), currentAngle_(initAngle_) {};
-
+    
     void updateTile(Tile* nextTile) { currentTile_ = nextTile; };
-    void changeAngle(uint16_t rotationAngle);  // changes currentAngle_  
+    void changeAngle(int16_t rotationAngle);  // changes currentAngle_  
+    void initializeAngle(int16_t initAngle);  // initialize currentAngle_
     
     int getNextTileKey(); // calls `Tile::getNeighbourKey(this->currentAngle_)`
 
 private:
     Tile* currentTile_;
-    uint16_t currentAngle_;
+    int16_t currentAngle_;
     vector<Pole*> detectedPoles_;
 };
