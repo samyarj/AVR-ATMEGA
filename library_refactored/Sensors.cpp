@@ -18,3 +18,18 @@ uint16_t Sensors::getDistance()
     distance /= sizeSample_;
     return distance;
 }
+
+bool Sensors::distanceUnder15cm()
+{
+    return getDistance() > distance15cm_;
+}
+
+bool Sensors::distanceUnder30cm()
+{
+    return getDistance() > distance30cm_;
+}
+
+bool Sensors::distanceUnder60cm()
+{
+    return getDistance() > distance60cm_;
+}
