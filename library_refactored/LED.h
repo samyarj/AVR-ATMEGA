@@ -6,6 +6,10 @@ public:
     LED();
     virtual ~LED();
 
+    void eteindre();
+    void allumerRouge();
+    void allumerVert();
+
 
 
 protected:
