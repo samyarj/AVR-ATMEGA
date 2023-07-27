@@ -18,10 +18,8 @@ protected:
     uint8_t _bit = 4;
 
 private:
-    can &can_; //from can.h
+    can can_; //from can.h
     const uint8_t sizeSample_ = 10;
-
-    uint16_t distance;
 
     //tested experimentally
     const uint16_t distance15cm_ = 110;
