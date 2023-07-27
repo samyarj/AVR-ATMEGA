@@ -12,8 +12,8 @@ Motors::Motors(Frequency frequency) : IOPorts()
 Motors::~Motors()
 {
     activateInMode();
-    TCCR0A |= (0 << WGM00);
-    TCCR0A |= (0 << COM0A1) | (0 << COM0B1);
+    TCCR0A &= ~(1 << WGM00);
+    TCCR0A &= ~((1 << COM0A1) | (1 << COM0B1));
 }
 
 void Motors::setIOMode(uint8_t wantedMode)
