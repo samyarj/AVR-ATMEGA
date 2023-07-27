@@ -104,3 +104,8 @@ void Motors::turnRight(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
     chooseMovement(_forward, _backward);
     adjustSpeed(leftWheelSpeed, rightWheelSpeed);
 }
+
+void Motors::stopMotor()
+{
+    adjustSpeed(0, 0);
+}
