@@ -32,7 +32,7 @@ private:
 
 //**NECESSARY CODE BELOW TO ENABLE FLASHING FUNCTION**
 
-//Possibility to put in on the main app file
+//Possibility to put it in on the main app file
 
 // LED l;
 // volatile bool _switch = true;
