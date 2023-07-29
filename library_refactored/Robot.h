@@ -26,11 +26,11 @@ private:
     int16_t currentAngle_;
     vector<Pole*> detectedPoles_;
 
-    LED* m_led;
-    Motors* m_motors;
-    Sensors* m_sensors;
-    Sound* m_sound;
-    InterruptButton* m_iButton;
-    WhiteButton* m_wButton;
+    LED* led_;
+    Motors* motors_;
+    Sensors* sensors_;
+    Sound* sound_;
+    InterruptButton* iButton_;
+    WhiteButton* wButton_;
     friend class RobotController;
 };

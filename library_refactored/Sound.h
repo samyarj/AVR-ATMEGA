@@ -12,7 +12,7 @@ public:
     Sound();
     virtual ~Sound();
     uint16_t convertNote(uint8_t givenNote);
-    void startSound(uint16_t noteFrequency);
+    void startSound(uint16_t givenNote);
     void stopSound();
 
 protected:

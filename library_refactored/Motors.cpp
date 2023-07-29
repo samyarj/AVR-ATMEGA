@@ -1,9 +1,9 @@
 #include "Motors.h"
 
-Motors::Motors(Frequency frequency) : IOPorts()
+Motors::Motors() : IOPorts()
 {
     activateOutMode();
-    selectPWMFrequency(frequency);
+    selectPWMFrequency(_frequency);
     // division d'horloge par 8 - implique une fréquence de PWM fixe
     TCCR0A |= (1 << WGM00);
     TCCR0A |= (1 << COM0A1) | (1 << COM0B1);

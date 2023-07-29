@@ -17,6 +17,7 @@ public:
 
     void startFlashing();
     void stopFlashing();
+    void flashLED();
 
 protected:
     uint32_t calculateIterations(uint32_t delay, uint32_t unity);
@@ -24,6 +25,7 @@ protected:
     volatile uint8_t *_port = &PORTA;
     volatile uint8_t *_ddr = &DDRA;
     uint8_t _bit = 0;
+    volatile bool _switch = true;
 
 private:
     uint32_t _LEDFrequency = 4000; // constant for the calculateIterations
@@ -35,13 +37,8 @@ private:
 //Possibility to put it in on the main app file
 
 // LED l;
-// volatile bool _switch = true;
 
 // ISR(TIMER1_COMPA_vect)
 // {
-//     _switch ^= 1;
-//     if (_switch)
-//         l.turnRed();
-//     else
-//         l.turnOff();
+//     l.flashLED();
 // }

@@ -65,3 +65,12 @@ void LED::stopFlashing()
 {
     TIMSK1 &= ~(1 << OCIE1A); // disable compare match interrupt// prescaler = 1024
 }
+
+void LED::flashLED()
+{
+    _switch ^= 1;
+    if (_switch)
+        turnRed();
+    else
+        turnOff();
+}
