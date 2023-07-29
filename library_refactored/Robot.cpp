@@ -1,6 +1,6 @@
 #include "Robot.h"
 
-void initializeAngle(int16_t initAngle)
+void Robot::initializeAngle(int16_t initAngle)
 {
     currentAngle_ = initAngle;
 }
