@@ -9,7 +9,7 @@ public:
     void turnLEDOff();
     void turnLEDRed();
     void turnLEDGreen();
-    void turnLEDAmber(uint32_t delay);
+    void turnLEDAmber(uint32_t delay); //in ms
     void startFlashingLED();
     void stopFLashingLED();
     void flashLED();
@@ -28,15 +28,15 @@ public:
     void startSound(uint16_t givenNote);
     void stopSound();
 
-    virtual bool interruptButtonIsOn();
-    virtual void initializeInterruptButton();
-    virtual void filterPressInterruptButton();
-    virtual void filterReleaseInterruptButton();
+    bool interruptButtonIsOn();
+    void initializeInterruptButton();
+    void filterPressInterruptButton();
+    void filterReleaseInterruptButton();
 
-    virtual bool whiteButtonIsOn();
-    virtual void initializeWhiteButton();
-    virtual void filterPressWhiteButton();
-    virtual void filterReleaseWhiteButton();
+    bool whiteButtonIsOn();
+    void initializeWhiteButton();
+    void filterPressWhiteButton();
+    void filterReleaseWhiteButton();
     
 private:
     Robot* robot_;
@@ -52,4 +52,23 @@ private:
 // ISR(TIMER1_COMPA_vect)
 // {
 //     controller.flashLED();
+// }
+
+
+//**NECESSARY CODE BELOW IF THE INTERRUPTION CAN HAPPEN ANYTIME**
+
+//Interrupt Button rebound filter
+// ISR(INT0_vect)
+// {
+//   _delay_ms(30); //rebound delay
+//   //does something
+//   EIFR |= (1 << INTF0);
+// }
+
+// //White Button rebound filter
+// ISR(PCINT2_vect)
+// {
+//   _delay_ms(30);//rebound delay
+//   //does something
+//   PCIFR |= (1 << PCIF2);
 // }
