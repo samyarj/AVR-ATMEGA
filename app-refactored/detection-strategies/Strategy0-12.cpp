@@ -1,6 +1,6 @@
-#include "strategy.h"
+#include "Strategy.h"
 
-void Strategy0X0YRight::execute(Deplacement &deplacement) 
+void Strategy0X12Y::execute(Deplacement &deplacement) override 
 {
     _delay_ms(500);
     deplacement.avancerVersPoto();
@@ -27,5 +27,4 @@ void Strategy0X0YRight::execute(Deplacement &deplacement)
     {
         detecte = false;
     }
-
 }

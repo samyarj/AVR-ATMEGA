@@ -1,6 +1,7 @@
-#include "strategy.h"
+#include "Strategy.h"
 
-void Strategy0X0YUP::execute(Deplacement &deplacement) 
+
+void Strategy16X0Y::execute(Deplacement& deplacement) override
 {
     _delay_ms(500);
     deplacement.avancerVersPoto();
@@ -10,20 +11,22 @@ void Strategy0X0YUP::execute(Deplacement &deplacement)
     }
 
     _delay_ms(500);
-    deplacement.avancerVersPotoD();
+    deplacement.avancerVersPotoG();
     if (deplacement.obtenirResultat() > 110)
     {
         return;
     }
 
     _delay_ms(500);
-    deplacement.avancerVersPotoD();
+    deplacement.avancerVersPotoG();
     if (deplacement.obtenirResultat() > 110)
     {
         return;
     }
+
     if (deplacement.obtenirResultat() < 110)
     {
         detecte = false;
     }
-};
+}
+

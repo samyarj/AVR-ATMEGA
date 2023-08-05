@@ -1,22 +1,16 @@
 # include "RobotController.h"
 # include "Strategy.h"
 
-// implémenter patron stratégie afin de changer order algo
+
+// This is the Contexte of the detection strategies in Strategy design pattern
 class RobotManager
 {
 public:
     RobotManager(RobotController* controller) : controller_(controller);
     ~RobotManager();
 
-    void setStrategy(Strategy *strategy) {
-        delete this->strategy;
-        this->strategy = strategy;
-    }
-
-    void executeStrategy(Deplacement &deplacement) {
-        if (this->strategy != nullptr)
-            this->strategy->execute(deplacement);
-    }
+    void setStrategy(Strategy *strategy);
+    void executeStrategy(Deplacement &deplacement);
 
 private:
     RobotController* controller_;

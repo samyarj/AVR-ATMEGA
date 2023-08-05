@@ -1,5 +1,6 @@
 #include "RobotManager.h"
 
+
 void RobotManager::setStrategy(Strategy *strategy) 
 {
     delete this->strategy_;
