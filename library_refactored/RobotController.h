@@ -1,10 +1,15 @@
-#include "Robot.h"
-#include "Robot.h"
+#include "LED.h"
+#include "memoire_24.h"
+#include "Motors.h"
+#include "RS232communication.h"
+#include "Sensors.h"
+#include "Sound.h"
+#include "SwitchButtons.h"
 
 class RobotController
 {
 public:
-    RobotController(Robot* robot) : robot_(robot) {}
+    RobotController() = default;
     
     void turnLEDOff();
     void turnLEDRed();
@@ -39,7 +44,12 @@ public:
     void filterReleaseWhiteButton();
     
 private:
-    Robot* robot_;
+    LED* led_;
+    Motors* motors_;
+    Sensors* sensors_;
+    Sound* sound_;
+    InterruptButton* iButton_;
+    WhiteButton* wButton_;
 };
 
 //**NECESSARY CODE BELOW TO ENABLE FLASHING FUNCTION**
