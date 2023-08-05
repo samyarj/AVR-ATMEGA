@@ -8,7 +8,17 @@ public:
     RobotManager(RobotController* controller) : controller_(controller);
     ~RobotManager();
 
+    void setStrategy(Strategy *strategy) {
+        delete this->strategy;
+        this->strategy = strategy;
+    }
+
+    void executeStrategy(Deplacement &deplacement) {
+        if (this->strategy != nullptr)
+            this->strategy->execute(deplacement);
+    }
+
 private:
     RobotController* controller_;
-    Strategy* strategy; 
+    Strategy* strategy_; 
 };
