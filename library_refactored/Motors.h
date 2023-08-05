@@ -12,7 +12,7 @@ enum class Frequency
 class Motors : public IOPorts
 {
 public:
-    Motors(Frequency frequency);
+    Motors();
     virtual ~Motors();
 
     void chooseMovement(uint8_t leftWheelDirection, uint8_t rightWheelDirection);
@@ -46,5 +46,5 @@ private:
     uint8_t _masque001 = 1;
     uint8_t _masque011 = 2;
     uint8_t _masque101 = 3;
-    
+    Frequency _frequency = Frequency::f245HZ;
 };

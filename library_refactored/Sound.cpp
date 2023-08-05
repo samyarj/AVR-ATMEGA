@@ -21,10 +21,10 @@ Sound::~Sound()
     // setPort(&PORTD, 6, 0);
 }
 
-void Sound::startSound(uint16_t noteFrequency)
+void Sound::startSound(uint16_t givenNote)
 {
     TCNT2 = 0;
-    OCR2A = (CPU_PRESCALER_ / (noteFrequency)) - 1;
+    OCR2A = (CPU_PRESCALER_ / (convertNote(givenNote))) - 1;
     TCCR2A = (1 << COM2A0) | (1 << WGM21); // compare match,  Mode CTC
     TCCR2B = (1 << CS22) | (1 << CS21);    // prescaler = 256
 }
