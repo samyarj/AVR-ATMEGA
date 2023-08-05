@@ -1,11 +1,11 @@
-#include "Robot.h"
+#include "RobotTracker.h"
 
-void Robot::initializeAngle(int16_t initAngle)
+void RobotTracker::initializeAngle(int16_t initAngle)
 {
     currentAngle_ = initAngle;
 }
 
-void Robot::changeAngle(int16_t rotationAngle) // currentAngle_ must be in between 0 and 360
+void RobotTracker::changeAngle(int16_t rotationAngle) // currentAngle_ must be in between 0 and 360
 {
     currentAngle_ += rotationAngle;
     if (currentAngle_ >= 360)
@@ -18,6 +18,6 @@ void Robot::changeAngle(int16_t rotationAngle) // currentAngle_ must be in betwe
     }
 }
 
-int Robot::getNextTileKey()
+int RobotTracker::getNextTileKey()
 {
 }
