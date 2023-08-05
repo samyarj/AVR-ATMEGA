@@ -42,6 +42,21 @@ public:
     void initializeWhiteButton();
     void filterPressWhiteButton();
     void filterReleaseWhiteButton();
+
+    //tested experimentally
+    void detectAndTurnLeft5();
+    void detectAndTurnRight5();
+    void detectAndTurnLeft10();
+    void detectAndTurnRight10();
+    void detectAndTurnLeft15();
+    void detectAndTurnRight15();
+    void detectAndTurnLeft45();
+    void detectAndTurnRight45();
+
+    void left90();
+    void right90();
+
+    void moveToPole();
     
 private:
     LED* led_;
