@@ -1,5 +1,20 @@
 #include "RobotController.h"
 
+RobotController::RobotController() : led_(new LEDController), motors_(new MotorsController), sensors_(new Sensors),
+sound_(new SoundController), iButton_(new InterruptButton), wButton_(new WhiteButton)
+{
+}
+
+RobotController::~RobotController()
+{
+    delete led_;
+    delete motors_;
+    delete sensors_;
+    delete sound_;
+    delete iButton_;
+    delete wButton_;
+}
+
 void RobotController::turnLEDOff()
 {
     led_->turnOff();

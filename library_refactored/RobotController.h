@@ -9,8 +9,8 @@
 class RobotController
 {
 public:
-    RobotController() = default;
-    ~RobotController() = default;
+    RobotController();
+    ~RobotController();
     
     //LED Controller methods
     void turnLEDOff();
@@ -81,8 +81,7 @@ private:
 
 //Possibility to put it in on the main app file
 
-//Robot* r = new Robot;
-//RobotController controller(r);
+//RobotController controller;
 
 // ISR(TIMER1_COMPA_vect)
 // {
