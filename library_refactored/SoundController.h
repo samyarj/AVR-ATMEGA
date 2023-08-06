@@ -6,11 +6,11 @@
 #include <avr/interrupt.h>
 #include "IOPorts.h"
 
-class Sound : public IOPorts
+class SoundController : public IOPorts
 {
 public:
-    Sound();
-    virtual ~Sound();
+    SoundController();
+    virtual ~SoundController();
     uint16_t convertNote(uint8_t givenNote);
     void startSound(uint16_t givenNote);
     void stopSound();

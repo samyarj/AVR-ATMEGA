@@ -1,5 +1,20 @@
 #include "RobotController.h"
 
+RobotController::RobotController() : led_(new LEDController), motors_(new MotorsController), sensors_(new Sensors),
+sound_(new SoundController), iButton_(new InterruptButton), wButton_(new WhiteButton)
+{
+}
+
+RobotController::~RobotController()
+{
+    delete led_;
+    delete motors_;
+    delete sensors_;
+    delete sound_;
+    delete iButton_;
+    delete wButton_;
+}
+
 void RobotController::turnLEDOff()
 {
     led_->turnOff();
@@ -128,4 +143,117 @@ void RobotController::filterPressWhiteButton()
 void RobotController::filterReleaseWhiteButton()
 {
     wButton_->filterRelease();
+}
+
+void RobotController::detectAndTurn(int repetitions)
+{
+    adjustSpeedMotor(100, 95);
+    for (int k = 0; k < repetitions; k++) //the robot turns for ~repetitions*100ms 
+    {
+        if (obstacleUnder60cm()) break; //to stop midway if an obstacle is detected 
+        _delay_ms(100); //the _delay_ms function can't take a variable as a parameter, only a constant
+    }
+    stopMotor();
+}
+
+void RobotController::initLeft()
+{
+    if (!obstacleUnder60cm())
+    {
+        turnLeft(255, 255); //max speed to overcome static friction
+        _delay_ms(40);
+    }
+}
+
+void RobotController::initRight()
+{
+    if (!obstacleUnder60cm())
+    {
+        turnRight(255, 255); //max speed to overcome static friction
+        _delay_ms(40);
+    }
+}
+
+//tested experimentally
+void RobotController::detectAndTurnLeft10() //initially 5
+{
+    initLeft();
+    detectAndTurn(2); //2 repetitions gives approximately 10 degrees in rotation
+}
+
+void RobotController::detectAndTurnRight10() //initially 5
+{
+    initRight();
+    detectAndTurn(2);
+}
+    
+void RobotController::detectAndTurnLeft25() //initially 15
+{
+    initLeft();
+    detectAndTurn(5); //5 repetitions gives approximately 25 degrees
+}
+
+void RobotController::detectAndTurnRight25() //initially 15
+{
+    initRight();
+    detectAndTurn(5); //5 repetitions gives approximately 25 degrees
+}
+
+void RobotController::detectAndTurnLeft60() //initially 45
+{
+    initLeft();
+    detectAndTurn(10); //10 repetitions gives approximately 60 degrees
+}
+
+void RobotController::detectAndTurnRight60() //initially 45
+{
+    initRight();
+    detectAndTurn(10); //10 repetitions gives approximately 60 degrees
+}
+
+void RobotController::turnLeft90()
+{
+    motors_->turnLeft90();
+}
+    
+void RobotController::turnRight90()
+{
+    motors_->turnRight90();
+}
+
+void RobotController::advanceToPole()
+{
+    while (!obstacleUnder15cm())
+    {
+        while (obstacleUnder60cm() && !obstacleUnder15cm())
+        {
+            moveForward(255, 255);
+            _delay_ms(40);
+            adjustSpeedMotor(90, 80);
+            _delay_ms(500);
+            stopMotor();
+        }
+
+        if (!obstacleUnder60cm())
+        {
+            detectAndTurnRight25();
+            detectAndTurnLeft25();
+            detectAndTurnLeft25();
+            detectAndTurnRight25();
+        }
+    }
+}
+
+void RobotController::rotateToPoleLeft45()
+{
+    detectAndTurnLeft60();
+    detectAndTurnRight25();
+    detectAndTurnLeft10();
+}
+
+void RobotController::rotateToPoleRight45()
+{
+    detectAndTurnRight60();
+    detectAndTurnLeft25();
+    detectAndTurnRight10();
 }
