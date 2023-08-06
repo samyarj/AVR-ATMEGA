@@ -171,18 +171,6 @@ void RobotController::detectAndTurnRight10() //initially 5
     initRight();
     detectAndTurn(2);
 }
-
-void RobotController::detectAndTurnLeft15() //initially 10
-{
-    initLeft();
-    detectAndTurn(3); //3 repetitions gives approximately 15 degrees
-}
-    
-void RobotController::detectAndTurnRight15() //initially 10
-{
-    initRight();
-    detectAndTurn(3); //3 repetitions gives approximately 15 degrees
-}
     
 void RobotController::detectAndTurnLeft25() //initially 15
 {
@@ -218,7 +206,39 @@ void RobotController::turnRight90()
     motors_->turnRight90();
 }
 
-void RobotController::moveToPole()
+void RobotController::advanceToPole()
 {
+    while (!obstacleUnder15cm())
+    {
+        while (obstacleUnder60cm() && !obstacleUnder15cm())
+        {
+            moveForward(255, 255);
+            _delay_ms(40);
+            adjustSpeedMotor(90, 80);
+            _delay_ms(500);
+            stopMotor();
+        }
 
+        if (!obstacleUnder60cm())
+        {
+            detectAndTurnRight25();
+            detectAndTurnLeft25();
+            detectAndTurnLeft25();
+            detectAndTurnRight25();
+        }
+    }
+}
+
+void RobotController::rotateToPoleLeft45()
+{
+    detectAndTurnLeft60();
+    detectAndTurnRight25();
+    detectAndTurnLeft10();
+}
+
+void RobotController::rotateToPoleRight45()
+{
+    detectAndTurnRight60();
+    detectAndTurnLeft25();
+    detectAndTurnRight10();
 }

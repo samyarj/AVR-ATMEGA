@@ -1,6 +1,6 @@
-#include "Motors.h"
+#include "MotorsController.h"
 
-Motors::Motors() : IOPorts()
+MotorsController::MotorsController() : IOPorts()
 {
     activateOutMode();
     selectPWMFrequency(_frequency);
@@ -9,26 +9,26 @@ Motors::Motors() : IOPorts()
     TCCR0A |= (1 << COM0A1) | (1 << COM0B1);
 }
 
-Motors::~Motors()
+MotorsController::~MotorsController()
 {
     activateInMode();
     TCCR0A &= ~(1 << WGM00);
     TCCR0A &= ~((1 << COM0A1) | (1 << COM0B1));
 }
 
-void Motors::setIOMode(uint8_t wantedMode)
+void MotorsController::setIOMode(uint8_t wantedMode)
 {
     setPort(_ddr, _bit - 1, wantedMode); //modified since there is 2 motors to control
     setPort(_ddr, _bit + 1, wantedMode);
 }
 
-void Motors::chooseMovement(uint8_t leftWheelDirection, uint8_t rightWheelDirection)
+void MotorsController::chooseMovement(uint8_t leftWheelDirection, uint8_t rightWheelDirection)
 {
     setPort(_port, _bit - 1, leftWheelDirection);
     setPort(_port, _bit + 2, rightWheelDirection);
 }
 
-uint8_t Motors::generatePWMMask(uint8_t wantedBit, uint8_t mask)
+uint8_t MotorsController::generatePWMMask(uint8_t wantedBit, uint8_t mask)
 {
     // Mask (PORTX &= 11100011)
     if (mask == _masque000)
@@ -44,7 +44,7 @@ uint8_t Motors::generatePWMMask(uint8_t wantedBit, uint8_t mask)
         return ((1 << wantedBit) | (1 << (wantedBit + 2)));
 }
 
-void Motors::selectPWMFrequency(Frequency frequency)
+void MotorsController::selectPWMFrequency(Frequency frequency)
 {
     switch (frequency)
     {
@@ -75,43 +75,43 @@ void Motors::selectPWMFrequency(Frequency frequency)
     }
 }
 
-void Motors::adjustSpeed(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
+void MotorsController::adjustSpeed(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
 {
     OCR0A = leftWheelSpeed;
     OCR0B = rightWheelSpeed;
 }
 
-void Motors::moveForward(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
+void MotorsController::moveForward(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
 {
     chooseMovement(_forward, _forward);
     adjustSpeed(leftWheelSpeed, rightWheelSpeed);
 }
 
-void Motors::moveBackward(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
+void MotorsController::moveBackward(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
 {
     chooseMovement(_backward, _backward);
     adjustSpeed(leftWheelSpeed, rightWheelSpeed);
 }
 
-void Motors::turnLeft(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
+void MotorsController::turnLeft(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
 {
     chooseMovement(_backward, _forward);
     adjustSpeed(leftWheelSpeed, rightWheelSpeed);
 }
 
-void Motors::turnRight(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
+void MotorsController::turnRight(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
 {
     chooseMovement(_forward, _backward);
     adjustSpeed(leftWheelSpeed, rightWheelSpeed);
 }
 
-void Motors::stopMotor()
+void MotorsController::stopMotor()
 {
     adjustSpeed(0, 0);
     _delay_ms(700); //to give time to friction to stop the movement before the next command
 }
 
-void Motors::turnLeft90() //use to adjust the position of the robot without detecting obstacles
+void MotorsController::turnLeft90() //use to adjust the position of the robot without detecting obstacles
 {
     turnLeft(255, 255);
     _delay_ms(80);
@@ -120,7 +120,7 @@ void Motors::turnLeft90() //use to adjust the position of the robot without dete
     stopMotor();
 }
 
-void Motors::turnRight90() //use to adjust the position of the robot without detecting obstacles
+void MotorsController::turnRight90() //use to adjust the position of the robot without detecting obstacles
 {
     turnRight(255, 255);
     _delay_ms(80);

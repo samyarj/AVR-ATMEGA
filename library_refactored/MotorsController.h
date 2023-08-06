@@ -9,11 +9,11 @@ enum class Frequency
         f15686HZ
     };
 
-class Motors : public IOPorts
+class MotorsController : public IOPorts
 {
 public:
-    Motors();
-    virtual ~Motors();
+    MotorsController();
+    virtual ~MotorsController();
 
     void chooseMovement(uint8_t leftWheelDirection, uint8_t rightWheelDirection);
     void selectPWMFrequency(Frequency frequency);

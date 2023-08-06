@@ -2,10 +2,10 @@
 #define F_CPU 8000000UL
 #endif
 
-#include "Sound.h"
+#include "SoundController.h"
 #include <unordered_map>
 
-Sound::Sound()
+SoundController::SoundController()
 {
     activateOutMode();
     togglePort(_mode00);
@@ -13,7 +13,7 @@ Sound::Sound()
     // setPort(&PORTD, 6, 0);
 }
 
-Sound::~Sound()
+SoundController::~SoundController()
 {
     activateInMode();
     togglePort(_mode00);
@@ -21,7 +21,7 @@ Sound::~Sound()
     // setPort(&PORTD, 6, 0);
 }
 
-void Sound::startSound(uint16_t givenNote)
+void SoundController::startSound(uint16_t givenNote)
 {
     TCNT2 = 0;
     OCR2A = (CPU_PRESCALER_ / (convertNote(givenNote))) - 1;
@@ -29,7 +29,7 @@ void Sound::startSound(uint16_t givenNote)
     TCCR2B = (1 << CS22) | (1 << CS21);    // prescaler = 256
 }
 
-void Sound::stopSound()
+void SoundController::stopSound()
 {
     TCNT2 = 0;
     OCR2A = 0;
@@ -37,7 +37,7 @@ void Sound::stopSound()
     TCCR2B = 0;
 };
 
-uint16_t Sound::convertNote(uint8_t givenNote)
+uint16_t SoundController::convertNote(uint8_t givenNote)
 {
     static const std::unordered_map<uint8_t, uint16_t> noteMap = 
     {
