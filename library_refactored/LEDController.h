@@ -1,10 +1,10 @@
 #include "IOPorts.h"
 
-class LED : public IOPorts
+class LEDController : public IOPorts
 {
 public:
-    LED();
-    virtual ~LED();
+    LEDController();
+    virtual ~LEDController();
 
     void turnOff();
     void turnRed();
@@ -36,7 +36,7 @@ private:
 
 //Possibility to put it in on the main app file
 
-// LED l;
+// LEDController l;
 
 // ISR(TIMER1_COMPA_vect)
 // {

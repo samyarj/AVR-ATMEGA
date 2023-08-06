@@ -1,36 +1,36 @@
-#include "LED.h"
+#include "LEDController.h"
 
-LED::LED()
+LEDController::LEDController()
 {
     activateOutMode();
 }
 
-LED::~LED()
+LEDController::~LEDController()
 {
     activateInMode();
 }
 
-void LED::turnOff()
+void LEDController::turnOff()
 {
     togglePort(_mode00);
 }
 
-void LED::turnRed()
+void LEDController::turnRed()
 {
     togglePort(_mode01);
 }
 
-void LED::turnGreen()
+void LEDController::turnGreen()
 {
     togglePort(_mode10);
 }
 
-uint32_t LED::calculateIterations(uint32_t delay, uint32_t unity)
+uint32_t LEDController::calculateIterations(uint32_t delay, uint32_t unity)
 {
     return (_LEDFrequency * delay) / unity;
 }
 
-void LED::turnAmber(uint32_t iterations)
+void LEDController::turnAmber(uint32_t iterations)
 {
     for (uint32_t i{0}; i < iterations; i++) // 250us per cycle
     {
@@ -43,17 +43,17 @@ void LED::turnAmber(uint32_t iterations)
     }
 }
 
-void LED::turnAmberMs(uint32_t delay)
+void LEDController::turnAmberMs(uint32_t delay)
 {
     turnAmber(calculateIterations(delay, 1000)); // for a delay in milliseconds
 }
 
-void LED::turnAmberS(uint32_t delay)
+void LEDController::turnAmberS(uint32_t delay)
 {
     turnAmber(calculateIterations(delay, 1)); // for a delay in seconds
 }
 
-void LED::startFlashing()
+void LEDController::startFlashing()
 {
     TCCR1B |= (1 << WGM12);              // mode CTC
     TIMSK1 |= (1 << OCIE1A);             // Enable compare match interrupt
@@ -61,12 +61,12 @@ void LED::startFlashing()
     TCCR1B |= (1 << CS12) | (1 << CS10); // prescaler = 1024
 }
 
-void LED::stopFlashing()
+void LEDController::stopFlashing()
 {
     TIMSK1 &= ~(1 << OCIE1A); // disable compare match interrupt// prescaler = 1024
 }
 
-void LED::flashLED()
+void LEDController::flashLED()
 {
     _switch ^= 1;
     if (_switch)
