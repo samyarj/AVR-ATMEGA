@@ -44,17 +44,21 @@ public:
     void filterReleaseWhiteButton();
 
     //tested experimentally
-    void detectAndTurnLeft5();
-    void detectAndTurnRight5();
+    void detectAndTurn(int repetitions);
+    void RobotController::initLeft();
+    void RobotController::initRight();
+
     void detectAndTurnLeft10();
     void detectAndTurnRight10();
     void detectAndTurnLeft15();
     void detectAndTurnRight15();
-    void detectAndTurnLeft45();
-    void detectAndTurnRight45();
+    void detectAndTurnLeft25();
+    void detectAndTurnRight25();
+    void detectAndTurnLeft60();
+    void detectAndTurnRight60();
 
-    void left90();
-    void right90();
+    void turnLeft90();
+    void turnRight90();
 
     void moveToPole();
     

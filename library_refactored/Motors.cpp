@@ -108,4 +108,23 @@ void Motors::turnRight(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed)
 void Motors::stopMotor()
 {
     adjustSpeed(0, 0);
+    _delay_ms(700); //to give time to friction to stop the movement before the next command
+}
+
+void Motors::turnLeft90() //use to adjust the position of the robot without detecting obstacles
+{
+    turnLeft(255, 255);
+    _delay_ms(80);
+    adjustSpeed(100, 95);
+    _delay_ms(800);
+    stopMotor();
+}
+
+void Motors::turnRight90() //use to adjust the position of the robot without detecting obstacles
+{
+    turnRight(255, 255);
+    _delay_ms(80);
+    adjustSpeed(100, 95);
+    _delay_ms(800);
+    stopMotor();
 }

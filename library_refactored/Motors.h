@@ -29,6 +29,8 @@ public:
     void turnLeft(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed);
     void turnRight(uint8_t leftWheelSpeed, uint8_t rightWheelSpeed);
     void stopMotor();
+    void turnLeft90();
+    void turnRight90();
 
 protected:
     virtual void setIOMode(uint8_t wantedMode);
