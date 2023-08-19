@@ -28,8 +28,8 @@ void SVGTransmission::crc32(uint8_t a)
 
 int SVGTransmission::orientation(Point point1, Point point2, Point point3)
 {
-    int val = (point2.y - point1.y) * (point3.x - point2.x) -
-              (point2.x - point1.x) * (point3.y - point2.y);
+    int val = (point2.getPosY() - point1.getPosY()) * (point3.getPosX() - point2.getPosX()) -
+              (point2.getPosX() - point1.getPosX()) * (point3.getPosY() - point2.getPosY());
     if (val == 0)
         return 0; // The points are colinear
     else if (val > 0)
@@ -65,9 +65,7 @@ void SVGTransmission::determineNPoles()
     for (int i = 0; i < 32; i++)
     {
         if (poles[i] == 1)
-        {
             nPoles++;
-        }
     }
 }
 
@@ -78,8 +76,8 @@ void SVGTransmission::determinePolePoints(Point *polePositionsXY)
     {
         if (poles[i] == 1)
         {
-            polePositionsXY[counter].x = i / 4;
-            polePositionsXY[counter].y = i - 4 * polePositionsXY[counter].x;
+            polePositionsXY[counter].setPositionX(i / 4);
+            polePositionsXY[counter].setPositionY(i - 4 * polePositionsXY[counter].getPosX());
             counter++;
         }
     }
@@ -102,7 +100,7 @@ void SVGTransmission::convexHull(Point polePositionsXY[], Point *hull)
         int leftmostPoint = 0;
         for (int i = 1; i < nPoles; i++)
         {
-            if (polePositionsXY[i].x < polePositionsXY[leftmostPoint].x)
+            if (polePositionsXY[i].getPosX() < polePositionsXY[leftmostPoint].getPosX())
             {
                 leftmostPoint = i;
             }
@@ -134,11 +132,11 @@ void SVGTransmission::convexHull(Point polePositionsXY[], Point *hull)
 void SVGTransmission::calculateArea(Point hull[])
 {
     for (int i = 0; i < hullSize; i++)
-    {
-        area += (((hull[i].x) * (hull[(i + 1) % hullSize].y)) - ((hull[(i + 1) % hullSize].x) * hull[i].y));
-    }
+        area += (((hull[i].getPosX()) * (hull[(i + 1) % hullSize].getPosY())) - ((hull[(i + 1) % hullSize].getPosX()) * hull[i].getPosY()));
+    
     area *= 121; // 11 squared
     area /= 2;
+    
     if (area < 0)
         area *= -1;
 }
@@ -147,8 +145,8 @@ void SVGTransmission::determineHullSVG(Point *hullSVG, Point *hull)
 {
     for (int i = 0; i < hullSize; i++)
     {
-        hullSVG[i].x = svgpoints[4 * hull[i].x + hull[i].y][0];
-        hullSVG[i].y = svgpoints[4 * hull[i].x + hull[i].y][1];
+        hullSVG[i].setPosX(svgpoints[4 * hull[i].getPosX() + hull[i].getPosY()][0]);
+        hullSVG[i].setPosY(svgpoints[4 * hull[i].getPosX() + hull[i].getPosY()][1]);
     }
 }
 
@@ -172,7 +170,7 @@ void SVGTransmission::transmitMiddlePolygon(Point *hullSVG)
     for (uint8_t i = 0; i < hullSize; i++)
     {
         char string[20];
-        sprintf(string, "%d,%d ", hullSVG[i].x, hullSVG[i].y);
+        sprintf(string, "%d,%d ", hullSVG[i].getPosX(), hullSVG[i].getPosY());
         strcat(middlePolygon, string);
     }
 

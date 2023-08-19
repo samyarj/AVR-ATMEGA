@@ -1,20 +1,26 @@
 #include <stdio.h>
 #include <math.h>
+#include <vector>
+#include <array>
+#include <string.h>
 
 #include <avr/io.h>
 #include <util/delay.h>
-#include <string.h>
 #include <util/crc16.h>
 
 #include "LEDController.h"
 #include "memoire24.h"
 #include "RS232communication.h"
 
-struct Point
+
+// Concrete class for 2D position of objects
+class Point
 {
-    int x, y;
+public:
+    Position(uint32_t x, uint32_t y) : AbsPosition(x, y) {};
 };
 
+// Class for serial communication
 class SVGTransmission
 {
 public:
