@@ -1,5 +1,18 @@
 #include "transmission.h"
 
+static std::vector<std::array<uint16_t, 2>> SVGTransmission::createSVGPoints()
+{
+    std::vector<std::array<uint16_t, 2>> svgpoints;
+    for (uint16_t x = 188; x <= 958; x += 110)
+    {
+        for (uint16_t y = 450; y >= 120; y -= 110)
+        {
+            svgpoints.push_back({x, y});
+        }
+    }
+    return svgpoints;
+}
+
 void SVGTransmission::crc32(uint8_t a)
 {
     uint8_t i;

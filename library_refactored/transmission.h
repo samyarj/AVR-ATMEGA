@@ -41,20 +41,8 @@ private:
     uint8_t END_TXT = 0x03;
     uint8_t END_TRANSMISSION = 0x04;
     
-    static std::vector<std::array<uint16_t, 2>> createSVGPoints()
-    {
-        std::vector<std::array<uint16_t, 2>> svgpoints;
-        for (uint16_t x = 188; x <= 958; x += 110)
-        {
-            for (uint16_t y = 450; y >= 120; y -= 110)
-            {
-                svgpoints.push_back({x, y});
-            }
-        }
-        return svgpoints;
-    }
-
-    static constexpr std::vector<std::array<uint16_t, 2>> svgpoints = createSVGPoints();
+    static std::vector<std::array<uint16_t, 2>> createSVGPoints();
+    static constexpr std::vector<std::array<uint16_t, 2>> svgpoints = this->createSVGPoints();
 
     serialCommunication communication;
     Memory24CXXX memory;
