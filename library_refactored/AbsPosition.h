@@ -9,6 +9,8 @@
 
 using namespace std;
 
+
+// Abstract class for 2d position of objects
 class AbsPosition
 {
 public:

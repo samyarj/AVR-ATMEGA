@@ -1,6 +1,8 @@
 #include "Tile.h"
 #include "Pole.h"
 
+
+// this class represents the position of robot on the map
 class RobotTracker
 {
 public:

@@ -1,5 +1,6 @@
 #include "IOPorts.h"
 
+
 enum class Frequency
     {
         f15HZ,
@@ -9,6 +10,8 @@ enum class Frequency
         f15686HZ
     };
 
+
+// A class to control the motors of the robot
 class MotorsController : public IOPorts
 {
 public:

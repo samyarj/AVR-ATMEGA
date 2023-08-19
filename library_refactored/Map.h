@@ -1,5 +1,7 @@
 #include "Tile.h"
 
+
+// A class to create the map where the robot will move
 class Map
 {
 public:

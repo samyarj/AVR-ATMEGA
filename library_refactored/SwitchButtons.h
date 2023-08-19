@@ -1,5 +1,7 @@
 #include "IOPorts.h"
 
+
+// A class to control the switch buttons of the robot
 class SwitchButton : public IOPorts
 {
 public:

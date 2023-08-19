@@ -6,6 +6,12 @@
 #include "SoundController.h"
 #include "SwitchButtons.h"
 
+
+// A class to control the robot
+// this class is the facade of the robot
+// under the hood, it uses the other classes
+// that control the different parts of the robot
+// it is the only class that should be used by the client
 class RobotController
 {
 public:
