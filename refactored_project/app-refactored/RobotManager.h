@@ -1,4 +1,5 @@
 # include "RobotController.h"
+# include "RobotTracker.h"
 # include "Strategy.h"
 
 
@@ -9,11 +10,12 @@ public:
     RobotManager(RobotController* controller) : controller_(controller);
     ~RobotManager();
 
-    void setStrategy(Strategy *strategy);
-    void executeStrategy(Deplacement &deplacement);
+    Strategy* setStrategy(Strategy *strategy);
+    void executeStrategy();  // this method also updates `tracker_`
 
 private:
+    Strategy* strategy_;
+
     RobotController* controller_;
-    Robot tracker_;
-    Strategy* strategy_; 
+    RobotTracker* tracker_;
 };
