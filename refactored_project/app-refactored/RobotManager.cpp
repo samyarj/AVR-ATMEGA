@@ -7,8 +7,8 @@ void RobotManager::setStrategy(Strategy *strategy)
     this->strategy_ = strategy;
 }
 
-void RobotManager::executeStrategy(Deplacement &deplacement) 
+void RobotManager::executeStrategy() 
 {
     if (this->strategy_ != nullptr)
-        this->strategy_->execute(deplacement);
+        this->strategy_->execute();
 }
