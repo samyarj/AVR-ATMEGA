@@ -14,5 +14,6 @@ public:
 
 private:
     RobotController* controller_;
+    Robot tracker_;
     Strategy* strategy_; 
 };

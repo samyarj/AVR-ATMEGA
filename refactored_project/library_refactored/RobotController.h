@@ -48,7 +48,7 @@ public:
     void filterPressWhiteButton();
     void filterReleaseWhiteButton();
 
-    //to be used by RobotManager for its algorithms (MotorsController methods)
+    // used by RobotManager for its algorithms (MotorsController methods)
     void advanceToPole();
     void rotateToPoleLeft45();
     void rotateToPoleRight45();

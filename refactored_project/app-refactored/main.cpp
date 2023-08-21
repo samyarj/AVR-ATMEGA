@@ -17,8 +17,6 @@ bool detected = true;
 volatile Position state;
 
 
-RobotController controller;
-RobotTracker tracker(/* Initialize with the initial tile and angle here */);
 RobotManage manager;
 
 ISR(INT0_vect)
