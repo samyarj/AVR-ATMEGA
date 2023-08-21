@@ -10,7 +10,7 @@ public:
     RobotManager(RobotController* controller) : controller_(controller);
     ~RobotManager();
 
-    Strategy* setStrategy(Strategy *strategy);
+    void setStrategy(Strategy *strategy);
     void executeStrategy();  // this method also updates `tracker_`
 
 private:
