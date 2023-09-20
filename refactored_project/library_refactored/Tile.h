@@ -1,5 +1,7 @@
 #include "AbsPosition.h"
 
+
+// this class represents a tile on the map
 class Tile : public AbsPosition
 {
 public:

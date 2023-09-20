@@ -1,6 +1,8 @@
 #include <avr/io.h>
 #define F_CPU 8000000
 
+
+// A class to control the RS232 communication
 class RS232communication
 {
 public:

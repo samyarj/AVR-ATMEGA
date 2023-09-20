@@ -1,5 +1,7 @@
 #include "IOPorts.h"
 
+
+// A class to control the LED of the robot
 class LEDController : public IOPorts
 {
 public:

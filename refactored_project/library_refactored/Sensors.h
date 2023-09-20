@@ -1,6 +1,8 @@
 #include "can.h"
 #include "IOPorts.h"
 
+
+// A class to control the sensors of the robot
 class Sensors : public IOPorts
 {
 public:

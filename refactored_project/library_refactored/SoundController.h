@@ -6,6 +6,8 @@
 #include <avr/interrupt.h>
 #include "IOPorts.h"
 
+
+// A class to control the sound module of the robot
 class SoundController : public IOPorts
 {
 public:

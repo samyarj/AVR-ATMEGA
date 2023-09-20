@@ -6,6 +6,12 @@
 #include "SoundController.h"
 #include "SwitchButtons.h"
 
+
+// A class to control the robot
+// this class is the facade of the robot
+// under the hood, it uses the other classes
+// that control the different parts of the robot
+// it is the only class that should be used by the client
 class RobotController
 {
 public:
@@ -42,7 +48,7 @@ public:
     void filterPressWhiteButton();
     void filterReleaseWhiteButton();
 
-    //to be used by RobotManager for its algorithms (MotorsController methods)
+    // used by RobotManager for its algorithms (MotorsController methods)
     void advanceToPole();
     void rotateToPoleLeft45();
     void rotateToPoleRight45();

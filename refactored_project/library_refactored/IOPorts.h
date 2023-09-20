@@ -3,6 +3,8 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
+
+// A class to manage in/out ports of the microcontroller
 class IOPorts
 {
 public:
